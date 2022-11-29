@@ -95,13 +95,123 @@
       let firstNum = document.querySelector('#first-num').value;
       let secondNum = document.querySelector('#second-num').value;
       let operator = document.querySelector('#operator').value;
-      output.innerHTML = eval(`${firstNum} ${operator} ${secondNum}`);
+      class InvalidType extends Error {
+        constructor(message) {
+        super(message);
+        this.name = "InvalidTypeError";
+        }
+      }
+      if(firstNum===""){
+        
+        throw new InvalidType("INVALID FIRSTNUMBER TYPE")
+      }
+      if(secondNum===""){
+        
+        throw new InvalidType("INVALID SECONDNUMBER TYPE")
+      }
+      try{
+        
+        output.innerHTML = eval(`${firstNum} ${operator} ${secondNum}`);
+      } catch(err){
+        
+        console.error(err);
+      }finally{
+      console.log("Done");
+      }
     });
+    
+    
+    
 
     let errorBtns = Array.from(document.querySelectorAll('#error-btns > button'));
+    
+  
 
     // Start your code here
     // You may move this JS to another file if you wish
+    
+    
+     let logc = document.getElementById("slog");
+    logc.addEventListener('click',e=>{
+      console.log("Console Log Demo");
+    });
+    let errc = document.getElementById("error");
+    errc.addEventListener('click',e=>{
+      console.error("Console Error Demo");
+    });
+    let countc = document.getElementById("count");
+    countc.addEventListener('click',e=>{
+      console.count("Count Button");
+    });
+    let warnc = document.getElementById("warn");
+    warnc.addEventListener('click',e=>{
+      console.warn("Console Warn Demo");
+    });
+    let assertc = document.getElementById("assert");
+    assertc.addEventListener('click',e=>{
+      const errorMsg = "The number does not equal to 3 ";
+      let number = 2;
+      console.assert(number === 3, '%o', { number, errorMsg });
+    });
+    let clearc = document.getElementById("clear");
+    clearc.addEventListener('click',e=>{
+      console.clear();
+    });
+    let dirc = document.getElementById("dir");
+    dirc.addEventListener('click',e=>{
+      console.dir(cdir);
+    });
+    let dirxmlc = document.getElementById("dirxml");
+    dirxmlc.addEventListener('click',e=>{
+      console.dirxml(cdirxml);
+    });
+    let gstartc = document.getElementById("gstart");
+    gstartc.addEventListener('click',e=>{
+      console.group();
+    });
+    let gendc = document.getElementById("gend");
+    gendc.addEventListener('click',e=>{
+      console.groupEnd();
+    });
+    let tablec = document.getElementById("table");
+    tablec.addEventListener('click',e=>{
+      function cclass(name,num){
+        this.name=name;
+        this.num=num;
+      }
+      
+      const a1 = new cclass("Software Engineering",110);
+      
+      const a2 = new cclass("Programming Language",130);
+   
+      const a3 = new cclass("Advanced Software",112);
+      console.table([a1,a2,a3]);
+    });
+    let tstartc = document.getElementById("tstart");
+    tstartc.addEventListener('click',e=>{
+      console.time("Timer Button");
+    });
+    let tendc = document.getElementById("tend");
+    tendc.addEventListener('click',e=>{
+      console.timeEnd("Timer Button");
+    });
+    let tracec = document.getElementById("trace");
+    tracec.addEventListener('click',e=>{
+      function num(nm){
+      
+        console.trace(nm);
+      }
+      
+      
+      num("v");
+    });
+    let triggerc = document.getElementById("trigger");
+    triggerc.addEventListener('click',e=>{
+      somerandomfunction();
+    });
+    window.addEventListener('error',e=>{
+      console.error("Sadly an error happened my friend");
+    });
   </script>
 </body>
 
